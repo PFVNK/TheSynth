@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Pads from './Components/Pads'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        hell0 world
+        <Pads />
       </div>
     );
   }
