@@ -1,1 +1,20 @@
+body {
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+  background-color: #191919; }
 
+.pad-grid {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: minmax(150px, auto);
+  grid-gap: 1em; }
+
+.pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border: solid red; }
