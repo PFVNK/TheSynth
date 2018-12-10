@@ -1,17 +1,25 @@
 $break-small: 320px
 $break-large: 1200px
-    
+
+body
+    margin: 0 auto
+    max-width: 56em
+    padding: 1em 0
+    background-color: #191919
+
 .pad-grid
+    display: flex
+    flex-wrap: wrap
+
     display: grid
-    width: 60vw
-    height: 60vh
-    margin: 20px
-    border: solid purple
-    grid-template-columns: repeat(6, 1fr)
-    grid-template-rows: repeat(2, 1fr)
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    grid-template-rows: minmax(150px, auto)
+    grid-gap: 1em
     
 .pad
-    width: 100px
-    height: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 200px
     border: solid red
 
