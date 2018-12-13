@@ -1,0 +1,41 @@
+$break-small: 320px
+$break-large: 1200px
+
+body
+    margin: 0 auto
+    max-width: 56em
+    padding: 1em 0
+    background-color: #191919
+
+.pad-grid
+    display: flex
+    flex-wrap: wrap
+
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    grid-template-rows: minmax(150px, auto)
+    grid-gap: 1em
+    
+.pad
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 200px
+    border: solid red
+
+.pad:hover
+   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba(255, 255, 255, 0.6);
+
+.octave-counter 
+	text-align: center
+	margin-top: 10px 
+	& button, & p 
+		display: inline-block
+
+	& button 
+		margin: 3px 3px
+		width: 40px
+    
+	
+    
+
