@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react'
 
+
 const { Provider, Consumer } = createContext()
 
 class SynthProvider extends Component {
@@ -32,7 +33,6 @@ class SynthProvider extends Component {
                 this.setState({ octave: 1 })
                 break
         }
-        console.log(`handle octave ${this.state.octave}`)
     }
 
     render() {
@@ -50,3 +50,12 @@ class SynthProvider extends Component {
 export { SynthProvider }
 
 export default Consumer
+
+
+import { SynthProvider } from './Components/SynthContext'
+
+Pads.contextType = Consumer
+
+export default Pads
+
+import Consumer from './SynthContext';
