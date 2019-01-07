@@ -8,7 +8,6 @@ import Octave from './Components/Octave'
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       octave: 1
     }
@@ -18,11 +17,14 @@ class App extends Component {
 
   handleClickOctave(action) {
     switch (action) {
-      case 'minus': this.setState({ octave: this.state.octave - 1 })
+      case 'minus':
+        this.setState({ octave: this.state.octave - 1 })
         break
-      case 'plus': this.setState({ octave: this.state.octave + 1 })
+      case 'plus':
+        this.setState({ octave: this.state.octave + 1 })
         break
-      default: this.setState({ octave: 1 })
+      default:
+        this.setState({ octave: 1 })
         break
     }
   }
@@ -35,10 +37,12 @@ class App extends Component {
         />
         <Octave
           octave={this.state.octave}
-          handleClick={this.handleClickOctave} />
+          handleClickOctave={this.handleClickOctave}
+        />
       </div>
     );
   }
 }
+
 
 export default App;
