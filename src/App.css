@@ -4,6 +4,16 @@ body {
   padding: 1em 0;
   background-color: #191919; }
 
+h3 {
+  color: white; }
+
+p {
+  color: white; }
+
+.control-label {
+  font-size: 1.5em;
+  color: WhiteSmoke; }
+
 .pad-grid {
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +34,8 @@ body {
 
 .octave-counter {
   text-align: center;
-  margin-top: 10px; }
+  margin-top: 10px;
+    margin-top-color: white; }
   .octave-counter button, .octave-counter p {
     display: inline-block; }
   .octave-counter button {
