@@ -1,21 +1,89 @@
 import React, { Component } from 'react'
-import '../App.sass';
 import Tone from 'tone'
-import PropTypes from 'prop-types'
+import '../App.sass';
+
 import Pad from '../Components/Pad'
 
-class Pads extends React.Component {
+
+class Pads extends Component {
     constructor(props) {
         super(props);
 
         // tone.js build
-        this.synth = new Tone.Synth().toMaster();
-        this.vol = new Tone.Volume(0);
-        this.synth.chain(this.vol, Tone.Master);
+        this.synth = new Tone.Synth().toMaster()
+        this.vol = new Tone.Volume(0)
+        this.synth.chain(this.vol, Tone.Master)
 
         // bindings
-        this.onDownKey = this.onDownKey.bind(this);
-        this.onUpKey = this.onUpKey.bind(this);
+        this.onDownKey = this.onDownKey.bind(this)
+        this.onUpKey = this.onUpKey.bind(this)
+
+        this.padCodes = [
+            {
+                key: 'a',
+                note: 'C'
+            },
+            {
+                key: 'w',
+                note: 'Cb'
+            },
+            {
+                key: 's',
+                note: 'D'
+            },
+            {
+                key: 'e',
+                note: 'Db'
+            },
+            {
+                key: 'd',
+                note: 'E'
+            },
+            {
+                key: 'f',
+                note: 'F'
+            },
+            {
+                key: 't',
+                note: 'Fb'
+            },
+            {
+                key: 'g',
+                note: 'G'
+            },
+            {
+                key: 'y',
+                note: 'Gb'
+            },
+            {
+                key: 'h',
+                note: 'A'
+            },
+            {
+                key: 'u',
+                note: 'Ab'
+            },
+            {
+                key: 'j',
+                note: 'B'
+            },
+        ];
+
+        this.state = {
+            pads: [<Pad key={1} />],
+            activeNote: '',
+            pressed: false,
+            clicked: false
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(`next props ${nextProps.octave}`)
+        console.log(this.props.octave)
+    }
+
+    componentDidUpdate() {
+
     }
 
     onDownKey(note) {
@@ -24,80 +92,78 @@ class Pads extends React.Component {
     }
 
     onUpKey(note) {
-        this.synth.triggerRelease();
+        this.synth.triggerRelease(note);
+    }
+
+
+    async componentDidMount() {
+        let newPads = await this.createPads()
+        this.setState({
+            pads: newPads
+        })
+
+        document.addEventListener('keydown', e => {
+            let index = this.state.pads.findIndex(item => item.key === e.key)
+            if (this.state.pressed === false && this.state.pads[index] !== undefined) {
+                this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                this.setState({
+                    activeNote: this.state.pads[index].note,
+                    pressed: true
+                })
+            }
+        })
+        document.addEventListener('keyup', e => {
+            this.onUpKey(this.state.activeNote)
+            this.setState({
+                activeNote: '',
+                pressed: false
+            })
+        })
+        document.addEventListener('mousedown', e => {
+            let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
+            if (this.state.clicked === false && this.state.pads[index] !== undefined) {
+                this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                this.setState({
+                    activeNote: this.state.pads[index].note,
+                    clicked: true
+                })
+            }
+        })
+        document.addEventListener('mouseup', e => {
+            this.onUpKey(this.state.activeNote)
+            this.setState({
+                activeNote: '',
+                clicked: false
+            })
+        })
+    }
+
+    createPads() {
+        return new Promise(resolve => {
+            let newPadCodes = this.padCodes.map((x, index) => (
+                <Pad
+                    key={x.key.toString()}
+                    id={index}
+                    note={`${x.note}`}
+                    onDown={this.onDownKey}
+                    onUp={this.onUpKey}
+                    octave={this.props.octave}
+                />
+            ))
+            resolve(newPadCodes)
+        })
     }
 
     render() {
-        const { octave } = this.props
         return (
-            <div className="pad-grid">
-                <Pad
-                    note={`C${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`Db${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`D${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`Eb${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`E${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`F${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`Gb${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`G${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`Ab${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`A${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`Bb${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-                <Pad
-                    note={`B${octave}`}
-                    onDown={this.onDownKey}
-                    onUp={this.onUpKey}
-                />
-            </div>
+            <React.Fragment >
+                <h3>TheSynth</h3>
+                <div className='pad-grid'>{this.state.pads.length > 0 && this.state.pads}</div>
+            </React.Fragment >
         );
     }
 }
 
+
 export default Pads
 
-Pads.propTypes = {
-    octave: PropTypes.number.isRequired
-}
