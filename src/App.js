@@ -3,6 +3,7 @@ import './App.sass';
 
 import Pads from './Components/Pads'
 import Octave from './Components/Octave'
+import Sidebar from './Components/Sidebar'
 
 
 class App extends Component {
@@ -13,6 +14,20 @@ class App extends Component {
     }
 
     this.handleClickOctave = this.handleClickOctave.bind(this)
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', e => {
+      if (e.key === 'z') {
+        this.setState({ octave: this.state.octave - 1 })
+      }
+      if (e.key === 'x') {
+        this.setState({ octave: this.state.octave + 1 })
+      }
+    })
+    document.addEventListener('keyup', e => {
+
+    })
   }
 
   handleClickOctave(action) {
@@ -31,15 +46,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Pads
-          octave={this.state.octave}
-        />
-        <Octave
-          octave={this.state.octave}
-          handleClickOctave={this.handleClickOctave}
-        />
-      </div>
+      <React.Fragment>
+        <div className="App">
+          <Sidebar />
+          <Pads
+            octave={this.state.octave}
+          />
+          <Octave
+            octave={this.state.octave}
+            handleClickOctave={this.handleClickOctave}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
