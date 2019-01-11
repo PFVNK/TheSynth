@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Tone from 'tone'
 import './App.sass';
 
 import Pads from './Components/Pads'
@@ -10,8 +11,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      octave: 1
+      octave: 1,
+      synth: new Tone.Synth().toMaster()
     }
+
+    // tone.js build
+    this.synth = this.state.synth
+    this.vol = new Tone.Volume(0)
+    this.synth.chain(this.vol, Tone.Master)
 
     this.handleClickOctave = this.handleClickOctave.bind(this)
   }
@@ -29,6 +36,11 @@ class App extends Component {
 
     })
   }
+
+  componentDidUpdate() {
+    console.log(`this is updated value ${this.state.value}`)
+  }
+
 
   handleClickOctave(action) {
     switch (action) {
@@ -48,8 +60,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <div className="App">
-          <Sidebar />
+          <Sidebar
+            updateSynthType={this.updateSynthType}
+            value={this.state.value}
+          />
           <Pads
+            synth={this.synth}
             octave={this.state.octave}
           />
           <Octave
