@@ -9,11 +9,6 @@ class Pads extends Component {
     constructor(props) {
         super(props);
 
-        // tone.js build
-        this.synth = new Tone.Synth().toMaster()
-        this.vol = new Tone.Volume(0)
-        this.synth.chain(this.vol, Tone.Master)
-
         // bindings
         this.onDownKey = this.onDownKey.bind(this)
         this.onUpKey = this.onUpKey.bind(this)
@@ -79,7 +74,7 @@ class Pads extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log(`next props ${nextProps.octave}`)
-        console.log(this.props.octave)
+        console.log(`synth props ${nextProps.synth}`)
     }
 
     componentDidUpdate() {
@@ -88,15 +83,17 @@ class Pads extends Component {
 
     onDownKey(note) {
         console.log(`${note} played`);
-        this.synth.triggerAttack(note);
+        this.props.synth.triggerAttack(note)
     }
 
     onUpKey(note) {
-        this.synth.triggerRelease(note);
+        this.props.synth.triggerRelease(note)
     }
 
 
     async componentDidMount() {
+        console.log(this.props.synth)
+
         let newPads = await this.createPads()
         this.setState({
             pads: newPads
@@ -120,6 +117,7 @@ class Pads extends Component {
             })
         })
         document.addEventListener('mousedown', e => {
+            e.preventDefault()
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.clicked === false && this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
