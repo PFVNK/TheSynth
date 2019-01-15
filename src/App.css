@@ -34,8 +34,7 @@ p {
 
 .octave-counter {
   text-align: center;
-  margin-top: 10px;
-    margin-top-color: white; }
+  margin-top: 10px; }
   .octave-counter button, .octave-counter p {
     display: inline-block; }
   .octave-counter button {
