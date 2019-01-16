@@ -117,7 +117,6 @@ class Pads extends Component {
             })
         })
         document.addEventListener('mousedown', e => {
-            e.preventDefault()
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.clicked === false && this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
