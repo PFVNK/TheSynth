@@ -73,8 +73,7 @@ class Pads extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(`next props ${nextProps.octave}`)
-        console.log(`synth props ${nextProps.synth}`)
+
     }
 
     componentDidUpdate() {
@@ -92,8 +91,6 @@ class Pads extends Component {
 
 
     async componentDidMount() {
-        console.log(this.props.synth)
-
         let newPads = await this.createPads()
         this.setState({
             pads: newPads
