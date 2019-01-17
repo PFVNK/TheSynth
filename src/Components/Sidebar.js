@@ -9,12 +9,12 @@ class Sidebar extends Component {
     }
 
     render() {
-        let { value } = this.props
+        let { synthvalue } = this.props
         return (
-            <div>
-                <div className='sidebar-element'>
+            <div className='sidebar-element'>
+                <div className='sidebar-synthtype'>
                     <h4>SynthType</h4>
-                    <select value={value} onChange={this.handleSynthChange}>
+                    <select value={synthvalue} onChange={this.handleSynthChange}>
                         <option value="Synth">Synth</option>
                         <option value="AMSynth">AMSynth</option>
                         <option value="FMSynth">FMSynth</option>
