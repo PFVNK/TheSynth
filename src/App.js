@@ -12,7 +12,8 @@ class App extends Component {
     super(props)
     this.state = {
       octave: 1,
-      synth: new Tone.Synth().toMaster()
+      synth: new Tone.Synth(),
+      synthvalue: 'Synth'
     }
 
     // tone.js build
@@ -21,6 +22,7 @@ class App extends Component {
     this.synth.chain(this.vol, Tone.Master)
 
     this.handleClickOctave = this.handleClickOctave.bind(this)
+    this.updateSynthType = this.updateSynthType.bind(this)
   }
 
   componentDidMount() {
@@ -38,8 +40,43 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(`this is updated value ${this.state.value}`)
+    this.synth = this.state.synth
+    this.vol = new Tone.Volume(0)
+    this.synth.chain(this.vol, Tone.Master)
   }
+
+  get defaultSettings() {
+    return {
+      Synth: {
+        oscillator: {
+          type: 'triangle'
+        },
+        envelope: {
+          attack: 0.1,
+          decay: 0.5,
+          sustain: 0.9,
+          release: 2
+        }
+      }
+    }
+  }
+
+  updateSynthType(synthType) {
+    if (this.state.synth) {
+      this.state.synth.disconnect()
+      this.state.synth.dispose()
+    }
+
+    let settings = this.defaultSettings[this.state.synthvalue]
+    if (settings !== 'undefined') {
+      this.setState({
+        synth: new Tone[synthType](settings),
+        synthvalue: synthType
+      })
+    }
+    console.log(this.state.synth)
+  }
+
 
 
   handleClickOctave(action) {
@@ -61,11 +98,11 @@ class App extends Component {
       <React.Fragment>
         <div className="App">
           <Sidebar
+            synthvalue={this.state.synthvalue}
             updateSynthType={this.updateSynthType}
-            value={this.state.value}
           />
           <Pads
-            synth={this.synth}
+            synth={this.state.synth}
             octave={this.state.octave}
           />
           <Octave
