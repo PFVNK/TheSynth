@@ -40,3 +40,6 @@ p {
   .octave-counter button {
     margin: 3px 3px;
     width: 40px; }
+
+.sidebar-element {
+  float: left; }
