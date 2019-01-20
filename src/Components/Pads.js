@@ -81,7 +81,6 @@ class Pads extends Component {
     }
 
     onDownKey(note) {
-        console.log(`${note} played`);
         this.props.synth.triggerAttack(note)
     }
 
