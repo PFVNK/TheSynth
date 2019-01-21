@@ -13,7 +13,9 @@ class App extends Component {
     this.state = {
       octave: 1,
       synth: new Tone.Synth(),
-      synthvalue: 'Synth'
+      synthvalue: 'Synth',
+      oscvalue: 'triangle',
+      test: 'test1'
     }
 
     // tone.js build
@@ -23,7 +25,9 @@ class App extends Component {
 
     this.handleClickOctave = this.handleClickOctave.bind(this)
     this.updateSynthType = this.updateSynthType.bind(this)
+    this.updateOscillatorType = this.updateOscillatorType.bind(this)
   }
+
 
   componentDidMount() {
     document.addEventListener('keydown', e => {
@@ -45,22 +49,6 @@ class App extends Component {
     this.synth.chain(this.vol, Tone.Master)
   }
 
-  get defaultSettings() {
-    return {
-      Synth: {
-        oscillator: {
-          type: 'triangle'
-        },
-        envelope: {
-          attack: 0.1,
-          decay: 0.5,
-          sustain: 0.9,
-          release: 2
-        }
-      }
-    }
-  }
-
   updateSynthType(synthType) {
     if (this.state.synth) {
       this.state.synth.disconnect()
@@ -70,14 +58,22 @@ class App extends Component {
     let settings = this.defaultSettings[this.state.synthvalue]
     if (settings !== 'undefined') {
       this.setState({
-        synth: new Tone[synthType](settings),
-        synthvalue: synthType
+        synthvalue: synthType,
+        synth: new Tone[synthType](settings) 
       })
     }
-    console.log(this.state.synth)
   }
 
-
+  updateOscillatorType(oscillatortype) {
+    this.setState({
+        oscvalue: oscillatortype,
+    },
+    () => {
+      let settings = this.defaultSettings[this.state.synthvalue]
+      this.setState({ synth: new Tone[this.state.synthvalue](settings) }) 
+      }
+    )
+  }
 
   handleClickOctave(action) {
     switch (action) {
@@ -93,13 +89,81 @@ class App extends Component {
     }
   }
 
+  get defaultSettings() {
+    return {
+        Synth: {
+            oscillator: {
+                type: this.state.oscvalue
+            },
+            envelope: {
+                attack: 0.1,
+                decay: 0.5,
+                sustain: 0.9,
+                release: 2
+            }
+        },
+        AMSynth: {
+            harmonicity: 3,
+            detune: 0,
+            oscillator: {
+                type: this.state.oscvalue
+            },
+            envelope: {
+                attack: 0.5,
+                decay: 0.3,
+                sustain: 2,
+                release: 0.9
+            },
+            modulation: {
+                type: 'square'
+            },
+            modulationEnvelope: {
+                attack: 0.5,
+                decay: 0,
+                sustain: 1,
+                release: 0.5
+            }
+        },
+        FMSynth: {
+            harmonicity: 3,
+            modulationIndex: 10,
+            detune: 5,
+            oscillator: {
+                type: this.state.oscvalue
+            },
+            envelope: {
+                attack: 0.01,
+                decay: 0.01,
+                sustain: 1,
+                release: 0.5
+            },
+            modulation: {
+                type: 'square'
+            },
+            modulationEnvelope: {
+                attack: 0.5,
+                decay: 0,
+                sustain: 1,
+                release: 0.5
+            }
+        },
+        PluckSynth: {
+            attackNoise: 1,
+            dampening: 4000,
+            resonance: 0.7
+        }
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
         <div className="App">
           <Sidebar
             synthvalue={this.state.synthvalue}
+            oscvalue = { this.state.oscvalue }
             updateSynthType={this.updateSynthType}
+            updateOscillatorType = { this.updateOscillatorType }
           />
           <Pads
             synth={this.state.synth}
