@@ -7,9 +7,9 @@ class Pad extends Component {
     render() {
         return (
             <div
-                className="pad"
+                className='pad'
                 id={this.props.id}
-                tabIndex="0"
+                tabIndex='0'
             />
         );
     }
