@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Tone from 'tone'
 import '../App.sass';
 
 import Pad from '../Components/Pad'
