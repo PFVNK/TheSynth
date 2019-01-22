@@ -13,9 +13,8 @@ class App extends Component {
     this.state = {
       octave: 1,
       synth: new Tone.Synth(),
-      synthvalue: 'Synth',
-      oscvalue: 'triangle',
-      test: 'test1'
+      synthtype: 'Synth',
+      oscillatortype: 'triangle'
     }
 
     // tone.js build
@@ -38,9 +37,6 @@ class App extends Component {
         this.setState({ octave: this.state.octave + 1 })
       }
     })
-    document.addEventListener('keyup', e => {
-
-    })
   }
 
   componentDidUpdate() {
@@ -55,23 +51,22 @@ class App extends Component {
       this.state.synth.dispose()
     }
 
-    let settings = this.defaultSettings[this.state.synthvalue]
-    if (settings !== 'undefined') {
-      this.setState({
-        synthvalue: synthType,
-        synth: new Tone[synthType](settings) 
-      })
-    }
+    let settings = this.defaultSettings[this.state.synthtype]
+
+    this.setState({
+      synthtype: synthType,
+      synth: new Tone[synthType](settings)
+    })
   }
 
+  // Sets oscillator type in defaultsettings
   updateOscillatorType(oscillatortype) {
-    this.setState({
-        oscvalue: oscillatortype,
+    this.setState({ 
+      oscillatortype: oscillatortype 
     },
     () => {
-      let settings = this.defaultSettings[this.state.synthvalue]
-      this.setState({ synth: new Tone[this.state.synthvalue](settings) }) 
-      }
+      this.synth.oscillator.type = oscillatortype
+    }
     )
   }
 
@@ -91,67 +86,67 @@ class App extends Component {
 
   get defaultSettings() {
     return {
-        Synth: {
-            oscillator: {
-                type: this.state.oscvalue
-            },
-            envelope: {
-                attack: 0.1,
-                decay: 0.5,
-                sustain: 0.9,
-                release: 2
-            }
+      Synth: {
+        oscillator: {
+          type: 'triangle'
         },
-        AMSynth: {
-            harmonicity: 3,
-            detune: 0,
-            oscillator: {
-                type: this.state.oscvalue
-            },
-            envelope: {
-                attack: 0.5,
-                decay: 0.3,
-                sustain: 2,
-                release: 0.9
-            },
-            modulation: {
-                type: 'square'
-            },
-            modulationEnvelope: {
-                attack: 0.5,
-                decay: 0,
-                sustain: 1,
-                release: 0.5
-            }
-        },
-        FMSynth: {
-            harmonicity: 3,
-            modulationIndex: 10,
-            detune: 5,
-            oscillator: {
-                type: this.state.oscvalue
-            },
-            envelope: {
-                attack: 0.01,
-                decay: 0.01,
-                sustain: 1,
-                release: 0.5
-            },
-            modulation: {
-                type: 'square'
-            },
-            modulationEnvelope: {
-                attack: 0.5,
-                decay: 0,
-                sustain: 1,
-                release: 0.5
-            }
-        },
-        PluckSynth: {
-            attackNoise: 1,
-            dampening: 4000,
-            resonance: 0.7
+        envelope: {
+          attack: 0.1,
+          decay: 0.5,
+          sustain: 0.9,
+          release: 2
         }
+      },
+      AMSynth: {
+        oscillator: {
+          type: 'triangle'
+        },
+        harmonicity: 3,
+        detune: 0,
+        envelope: {
+          attack: 0.5,
+          decay: 0.3,
+          sustain: 2,
+          release: 0.9
+        },
+        modulation: {
+          type: 'triangle'
+        },
+        modulationEnvelope: {
+          attack: 0.5,
+          decay: 0,
+          sustain: 1,
+          release: 0.5
+        }
+      },
+      FMSynth: {
+        oscillator: {
+          type: 'triangle'
+        },
+        harmonicity: 3,
+        modulationIndex: 10,
+        detune: 5,
+        envelope: {
+          attack: 0.01,
+          decay: 0.01,
+          sustain: 1,
+          release: 0.5
+        },
+        modulation: {
+          type: 'triangle'
+        },
+        modulationEnvelope: {
+          attack: 0.5,
+          decay: 0,
+          sustain: 1,
+          release: 0.5
+        }
+      },
+      PluckSynth: {
+        attackNoise: 1,
+        dampening: 4000,
+        resonance: 0.7
+      }
     }
   }
 
@@ -161,9 +156,9 @@ class App extends Component {
         <div className="App">
           <Sidebar
             synthvalue={this.state.synthvalue}
-            oscvalue = { this.state.oscvalue }
+            oscvalue={this.state.oscvalue}
             updateSynthType={this.updateSynthType}
-            updateOscillatorType = { this.updateOscillatorType }
+            updateOscillatorType={this.updateOscillatorType}
           />
           <Pads
             synth={this.state.synth}
