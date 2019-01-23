@@ -3,7 +3,6 @@ import Tone from 'tone'
 import './App.sass';
 
 import Pads from './Components/Pads'
-import Octave from './Components/Octave'
 import Sidebar from './Components/Sidebar'
 
 
@@ -52,7 +51,6 @@ class App extends Component {
     }
 
     let settings = this.defaultSettings[this.state.synthtype]
-
     this.setState({
       synthtype: synthType,
       synth: new Tone[synthType](settings)
@@ -159,14 +157,12 @@ class App extends Component {
             oscvalue={this.state.oscvalue}
             updateSynthType={this.updateSynthType}
             updateOscillatorType={this.updateOscillatorType}
+            octave={this.state.octave}
+            handleClickOctave={this.handleClickOctave}
           />
           <Pads
             synth={this.state.synth}
             octave={this.state.octave}
-          />
-          <Octave
-            octave={this.state.octave}
-            handleClickOctave={this.handleClickOctave}
           />
         </div>
       </React.Fragment>
