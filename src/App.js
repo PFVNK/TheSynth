@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tone from 'tone'
-import './App.sass';
+import './App.scss';
 
 import Pads from './Components/Pads'
 import Sidebar from './Components/Sidebar'

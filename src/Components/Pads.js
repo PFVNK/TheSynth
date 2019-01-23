@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../App.sass';
+import '../App.scss';
 
 import Pad from '../Components/Pad'
 
