@@ -34,11 +34,14 @@ p {
 
 .sidebar-octave-counter {
   margin-top: 10px; }
-  .sidebar-octave-counter button, .sidebar-octave-counter p {
-    display: inline-block; }
   .sidebar-octave-counter button {
+    display: inline-block;
     margin: 3px 3px;
-      margin-width: 40px; }
+    width: 40px; }
+  .sidebar-octave-counter p {
+    display: inline-block; }
+  .sidebar-octave-counter h4 {
+    margin-bottom: 7px; }
 
 .sidebar-element {
   float: left; }
