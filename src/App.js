@@ -4,6 +4,7 @@ import './App.scss';
 
 import Pads from './Components/Pads'
 import Sidebar from './Components/Sidebar'
+import KnobPanel from './Components/KnobPanel'
 
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
       octave: 1,
       synth: new Tone.Synth(),
       synthtype: 'Synth',
-      oscillatortype: 'triangle'
+      oscillatortype: 'triangle',
+      value: 0
     }
 
     // tone.js build
@@ -59,14 +61,21 @@ class App extends Component {
 
   // Sets oscillator type in defaultsettings
   updateOscillatorType(oscillatortype) {
-    this.setState({ 
-      oscillatortype: oscillatortype 
+    this.setState({
+      oscillatortype: oscillatortype
     },
-    () => {
-      this.synth.oscillator.type = oscillatortype
-    }
+      () => {
+        this.synth.oscillator.type = oscillatortype
+      }
     )
   }
+
+  // Will handle effect changes
+  handleChange = newValue => {
+    this.setState({
+      value: newValue
+    });
+  };
 
   handleClickOctave(action) {
     switch (action) {
@@ -89,8 +98,8 @@ class App extends Component {
           type: 'triangle'
         },
         envelope: {
-          attack: 0.1,
-          decay: 0.5,
+          attack: 0.01,
+          decay: 0.9,
           sustain: 0.9,
           release: 2
         }
@@ -152,6 +161,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <div className="App">
+          <KnobPanel
+            handleChange={this.handleChange}
+          />
           <Sidebar
             synthvalue={this.state.synthvalue}
             oscvalue={this.state.oscvalue}
