@@ -8,7 +8,8 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "^2.1.3",
-    "tone": "^0.12.80"
+    "tone": "^0.12.80",
+    "unmute": "^0.1.3"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
