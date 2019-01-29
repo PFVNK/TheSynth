@@ -6,6 +6,10 @@ class KnobPanel extends Component {
         return (
             <React.Fragment>
                 <div className='knob-panel'>
+                    <div className='title'>
+                        <h3>TheSynth</h3>
+                    </div>
+
                     <Knob
                         size={55}
                         numTicks={25}
