@@ -1,32 +1,47 @@
 // Global element styling
 body {    
-    margin: 0 auto;
-    max-width: 56em;
-    padding: 1em 0;
+    position: relative;
     background-color: #191919;
 }
 
 h3 {
     color: white;
+    width: 10vw;
 }
 
 p {
     color: white;
-}    
+}
+
+.App {
+    position: relative;
+    width: 80vw;
+    margin-left: 10vw;
+    height: 80vh;
+    margin-top: 10vh;
+    background-color: black;
+}
 
 // Pads and Octave styling
 .control-label {    
     font-size: 1.5em;
     color: WhiteSmoke;
-}        
+}
+       
+.pad-grid {   
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 80px;
+    margin-bottom: 30px;
 
-.pad-grid {    
     display: flex;
     flex-wrap: wrap;
 
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: minmax(150px, auto);
+    grid-template-columns: repeat(4, 130px);
+    grid-template-rows: minmax(130px, auto);
     grid-gap: 1em;
 }
     
@@ -34,7 +49,8 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 130px;
+    width: 130px;
     border: solid red;
 }
 
@@ -60,7 +76,19 @@ p {
 }
 
 .sidebar-element {
-    float: left;
+    width: 20vw;
+}
+
+.sidebar-container {
+    display: grid;
+    position: absolute;
+    width: 30vw;
+    height: 78%;
+    margin: 0;
+    place-items: center center;
+    select {
+        width: 100%;
+    }
 }
 
 .knob {
@@ -68,6 +96,7 @@ p {
     position: relative;
     float: right;
     margin: 0 40px;
+    margin-top: 10px;
   }
   .knob .ticks {
     position: absolute;
@@ -107,6 +136,15 @@ p {
   .knob-panel {
       display: flex;
       justify-content: flex-end;
+      padding: 1em;
+      height: 100px;
+      margin-right: 80px;
+  }
+
+  .title {
+      width: 100%;
+      font-size: 3em;
+      margin-left: 100px;
   }
   
 
