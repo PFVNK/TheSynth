@@ -149,7 +149,6 @@ class Pads extends Component {
     render() {
         return (
             <React.Fragment >
-                <h3>TheSynth</h3>
                 <div className='pad-grid'>{this.state.pads.length > 0 && this.state.pads}</div>
             </React.Fragment >
         );
