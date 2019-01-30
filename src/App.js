@@ -106,10 +106,10 @@ class App extends Component {
                     type: 'triangle'
                 },
                 envelope: {
-                    attack: 0.01,
-                    decay: 0.9,
-                    sustain: 0.9,
-                    release: 2
+                    attack: 0.005,
+                    decay: 0.1,
+                    sustain: 0.3,
+                    release: 1
                 }
             },
             AMSynth: {
@@ -119,10 +119,10 @@ class App extends Component {
                 harmonicity: 3,
                 detune: 0,
                 envelope: {
-                    attack: 0.5,
-                    decay: 0.3,
-                    sustain: 2,
-                    release: 0.9
+                    attack: 0.01,
+                    decay: 0.01,
+                    sustain: 1,
+                    release: 0.5
                 },
                 modulation: {
                     type: 'triangle'
