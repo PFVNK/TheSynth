@@ -40,7 +40,7 @@ p {
   justify-content: center;
   height: 130px;
   width: 130px;
-  border: solid red; }
+  border: solid #ff3f34; }
 
 .pad:active {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba(255, 255, 255, 0.6); }
@@ -50,7 +50,9 @@ p {
   .sidebar-octave-counter button {
     display: inline-block;
     margin: 3px 3px;
-    width: 40px; }
+    width: 40px;
+    color: white;
+    background-color: #222; }
   .sidebar-octave-counter p {
     display: inline-block; }
   .sidebar-octave-counter h4 {
@@ -58,6 +60,13 @@ p {
 
 .sidebar-element {
   width: 20vw; }
+  .sidebar-element h4 {
+    color: #2ecc71; }
+  .sidebar-element select {
+    color: white;
+    background-color: #222; }
+    .sidebar-element select option {
+      background-color: #222; }
 
 .sidebar-container {
   display: grid;
@@ -68,13 +77,15 @@ p {
   place-items: center center; }
   .sidebar-container select {
     width: 100%; }
+  .sidebar-container select:active, .sidebar-container select:hover {
+    outline-color: #2ecc71; }
 
 .knob {
   display: flex;
   position: relative;
   float: right;
   margin: 0 40px;
-  margin-top: 10px; }
+  margin-top: 20px; }
 
 .knob .ticks {
   position: absolute; }
@@ -87,7 +98,7 @@ p {
   transition: box-shadow 0.5s; }
 
 .knob .ticks .tick.active {
-  box-shadow: inset 0 0 5px 2px red, 0 0 0 1px red; }
+  box-shadow: inset 0 0 5px 2px #ff3f34, 0 0 0 1px #ff3f34; }
 
 .knob.outer {
   border-radius: 50%;
@@ -119,4 +130,4 @@ p {
 .title {
   width: 100%;
   font-size: 3em;
-  margin-left: 100px; }
+  margin-left: 70px; }
