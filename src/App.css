@@ -15,7 +15,8 @@ p {
   margin-left: 10vw;
   height: 80vh;
   margin-top: 10vh;
-  background-color: black; }
+  background-color: black;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); }
 
 .control-label {
   font-size: 1.5em;
