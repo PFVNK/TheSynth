@@ -5,41 +5,42 @@ class KnobPanel extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className='knob-panel'>
+                <div className='head-container'>
                     <div className='title'>
                         <h3>TheSynth</h3>
                     </div>
-
-                    <Knob
-                        size={55}
-                        numTicks={25}
-                        degrees={260}
-                        min={0}
-                        max={10}
-                        value={3}
-                        color={false}
-                        onChange={this.props.handleReverbChange}
-                    />
-                    <Knob
-                        size={55}
-                        numTicks={25}
-                        degrees={260}
-                        min={0}
-                        max={10}
-                        value={3}
-                        color={false}
-                        onChange={this.props.handlePpdChange}
-                    />
-                    <Knob
-                        size={55}
-                        numTicks={25}
-                        degrees={260}
-                        min={1}
-                        max={100}
-                        value={30}
-                        color={false}
-                        onChange={this.props.handleChange}
-                    />
+                    <div className='knob-panel'>
+                        <Knob
+                            size={45}
+                            numTicks={25}
+                            degrees={260}
+                            min={0}
+                            max={10}
+                            value={3}
+                            color={false}
+                            onChange={this.props.handleReverbChange}
+                        />
+                        <Knob
+                            size={45}
+                            numTicks={25}
+                            degrees={260}
+                            min={0}
+                            max={10}
+                            value={3}
+                            color={false}
+                            onChange={this.props.handlePpdChange}
+                        />
+                        <Knob
+                            size={45}
+                            numTicks={25}
+                            degrees={260}
+                            min={1}
+                            max={100}
+                            value={30}
+                            color={false}
+                            onChange={this.props.handleChange}
+                        />
+                    </div>
                 </div>
             </React.Fragment>
         )
