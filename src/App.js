@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { slide as Menu } from 'react-burger-menu'
 import Tone from 'tone'
 import UnmuteButton from 'unmute'
+import MediaQuery from 'react-responsive'
 import './App.scss';
 
 import Pads from './Components/Pads'
@@ -120,7 +122,7 @@ class App extends Component {
                 detune: 0,
                 envelope: {
                     attack: 0.01,
-                    decay: 0.01,
+                    decay: 0.1,
                     sustain: 1,
                     release: 0.5
                 },
@@ -170,18 +172,33 @@ class App extends Component {
         return (
             < React.Fragment >
                 <div className="App">
+                    <MediaQuery query='(max-width: 900px)'>
+                        <Menu>
+                            <Sidebar
+                                synthvalue={this.state.synthvalue}
+                                oscvalue={this.state.oscvalue}
+                                updateSynthType={this.updateSynthType}
+                                updateOscillatorType={this.updateOscillatorType}
+                                octave={this.state.octave}
+                                handleClickOctave={this.handleClickOctave}
+                            />
+                        </Menu>
+                    </MediaQuery>
                     <KnobPanel
                         handleReverbChange={this.handleReverbChange}
                         handlePpdChange={this.handlePpdChange}
                     />
-                    <Sidebar
-                        synthvalue={this.state.synthvalue}
-                        oscvalue={this.state.oscvalue}
-                        updateSynthType={this.updateSynthType}
-                        updateOscillatorType={this.updateOscillatorType}
-                        octave={this.state.octave}
-                        handleClickOctave={this.handleClickOctave}
-                    />
+                    <MediaQuery query='(min-width: 900px)'>
+                        <Sidebar
+                            synthvalue={this.state.synthvalue}
+                            oscvalue={this.state.oscvalue}
+                            updateSynthType={this.updateSynthType}
+                            updateOscillatorType={this.updateOscillatorType}
+                            octave={this.state.octave}
+                            handleClickOctave={this.handleClickOctave}
+                        />
+                    </MediaQuery>
+
                     <Pads
                         synth={this.state.synth}
                         octave={this.state.octave}
