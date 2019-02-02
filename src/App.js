@@ -65,13 +65,20 @@ class App extends Component {
 
     // Sets oscillator type in defaultsettings
     updateOscillatorType(oscillatortype) {
-        this.setState({
-            oscillatortype: oscillatortype
-        },
-            () => {
-                this.synth.oscillator.type = oscillatortype
-            }
-        )
+        if (this.state.synthtype !== 'PluckSynth') {
+            this.setState({
+                oscillatortype: oscillatortype
+            },
+                () => {
+                    this.synth.oscillator.type = oscillatortype
+                }
+            )
+        } else {
+            this.setState({
+                oscillatortype: ''
+            })
+        }
+
     }
 
     // Will handle effect changes
