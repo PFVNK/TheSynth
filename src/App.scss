@@ -496,3 +496,8 @@ p {
     }
   }
   
+  @media(max-width: 500px) {
+    .sidebar-element {
+        width: 25vw;
+    }
+  }

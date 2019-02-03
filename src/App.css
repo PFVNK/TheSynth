@@ -366,3 +366,7 @@ p {
     margin-left: 30px; }
   .sidebar-element {
     width: 20vw; } }
+
+@media (max-width: 500px) {
+  .sidebar-element {
+    width: 25vw; } }
