@@ -8,8 +8,6 @@ class Pads extends Component {
     constructor(props) {
         super(props);
 
-        this.thisPad = React.createRef()
-
         // bindings
         this.onDownKey = this.onDownKey.bind(this)
         this.onUpKey = this.onUpKey.bind(this)
