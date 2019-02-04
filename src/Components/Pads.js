@@ -8,6 +8,8 @@ class Pads extends Component {
     constructor(props) {
         super(props);
 
+        this.thisPad = React.createRef()
+
         // bindings
         this.onDownKey = this.onDownKey.bind(this)
         this.onUpKey = this.onUpKey.bind(this)
@@ -67,7 +69,8 @@ class Pads extends Component {
             pads: [<Pad key={1} />],
             activeNote: '',
             pressed: false,
-            clicked: false
+            clicked: false,
+            touched: false
         }
     }
 
@@ -120,12 +123,31 @@ class Pads extends Component {
                     clicked: true
                 })
             }
+            console.log(this.thisPad)
         })
         document.addEventListener('mouseup', e => {
             this.onUpKey(this.state.activeNote)
             this.setState({
                 activeNote: '',
                 clicked: false
+            })
+        })
+        document.addEventListener('touchstart', e => {
+            let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
+            if (this.state.touched === false && this.state.pads[index] !== undefined) {
+                this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                this.setState({
+                    activeNote: this.state.pads[index].note,
+                    touched: true
+                })
+            }
+            console.log(e)
+        })
+        document.addEventListener('touchend', e => {
+            this.onUpKey(this.state.activeNote)
+            this.setState({
+                activeNote: '',
+                touched: false
             })
         })
     }
