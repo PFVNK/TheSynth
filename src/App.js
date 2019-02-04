@@ -175,7 +175,6 @@ class App extends Component {
     }
 
     render() {
-        UnmuteButton()
         return (
             < React.Fragment >
                 <div className="App">
