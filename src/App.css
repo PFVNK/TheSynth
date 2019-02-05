@@ -273,7 +273,7 @@ p {
     display: flex;
     justify-content: flex-end;
     height: 150px;
-    margin-right: 30px; }
+    margin-right: 10px; }
   .sidebar-container {
     width: 23vw;
     height: 78%;
@@ -295,7 +295,7 @@ p {
     justify-content: flex-end;
     padding: 1em;
     height: 150px;
-    margin-right: 30px; }
+    margin-right: 10px; }
   .sidebar-container {
     width: 19vw;
     height: 78%;
@@ -333,7 +333,7 @@ p {
     justify-content: flex-end;
     padding: 1em;
     height: 150px;
-    margin-right: 30px; }
+    margin-right: 10px; }
   .sidebar-container {
     width: 15vw;
     height: 78%;
@@ -390,7 +390,10 @@ p {
 
 @media (max-width: 500px) {
   .sidebar-element {
-    width: 25vw; } }
+    width: 25vw; }
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100vh !important; } }
 
 @media (max-width: 420px) {
   .App {
