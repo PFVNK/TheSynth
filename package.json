@@ -13,6 +13,10 @@
     "tone": "^0.12.80",
     "unmute": "^0.1.3"
   },
+  "engines": {
+    "npm": "6.5.0",
+    "node": "8.11.1"
+  },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
