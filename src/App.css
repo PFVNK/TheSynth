@@ -147,7 +147,7 @@ p {
   width: 30vw;
   height: 78%;
   margin: 0;
-}
+  place-items: center center; }
   .sidebar-container select {
     width: 100%; }
   .sidebar-container select:active, .sidebar-container select:hover {
