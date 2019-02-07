@@ -129,6 +129,26 @@ class Pads extends Component {
                 clicked: false
             })
         })
+        document.addEventListener('touchstart', e => {
+            e.preventDefault()
+            let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
+            if (this.state.touched === false && this.state.pads[index] !== undefined) {
+                this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                this.setState({
+                    activeNote: this.state.pads[index].note,
+                    touched: true
+                })
+            }
+            console.log(e)
+        })
+        document.addEventListener('touchend', e => {
+            e.preventDefault()
+            this.onUpKey(this.state.activeNote)
+            this.setState({
+                activeNote: '',
+                touched: false
+            })
+        })
     }
 
     createPads() {
