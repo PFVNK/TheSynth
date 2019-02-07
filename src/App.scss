@@ -6,12 +6,15 @@ $select-black: #222;
 // Global element styling
 body {    
     position: relative;
-    background-color: #191919;
+    // background-color: #191919;
+    background-image: url(concretetext.jpg);
     overflow: hidden;
 }
+
 html {
     height: 100vh;
     width: 100vw;
+    background-image: url(concretetext.jpg);
 }
 
 h3 {
