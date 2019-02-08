@@ -542,6 +542,7 @@ p {
 
   @media(max-width: 420px) {
     .App {
+        min-width: 0;
         height: 100vh;
         margin: 0;
     }
@@ -774,12 +775,18 @@ p {
   }
 
   @media(max-width: 330px) {
+        .App {
+            min-width: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
         .pad-grid {   
         position: absolute;
         bottom: 0;
         left: 0;
         margin: 0;
-        margin-left: 35px;
+        margin-left: 21px;
         margin-bottom:15px;
 
     
@@ -787,18 +794,18 @@ p {
         flex-wrap: wrap;
     
         display: grid;
-        grid-template-columns: repeat(3, 55px);
-        grid-template-rows: minmax(55px, auto);
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: minmax(70px, auto);
         grid-gap: .8em;
-        grid-column-gap: 2.5em;
+        grid-column-gap: 2em;
     }
         
     .pad {    
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 55px;
-        width: 55px;
+        height: 70px;
+        width: 70px;
     }
 
     .sidebar-element {
@@ -819,7 +826,7 @@ p {
 
     .head-container {
         position: relative;
-        width: 100%;
+        width: 100vw;
         height: 80px;
     }
 
@@ -827,7 +834,7 @@ p {
         position: absolute;
         bottom: 0;
         left: -20px;
-        top: 55px;
+        top: 65px;
         display: flex;
         justify-content: center;
         padding: 1em;
