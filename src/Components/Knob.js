@@ -46,6 +46,11 @@ class Knob extends Component {
         document.addEventListener("mouseup", e => {
             document.removeEventListener("mousemove", moveHandler);
         });
+
+        document.addEventListener("touchmove", moveHandler);
+        document.addEventListener("touchend", e => {
+            document.removeEventListener("touchmove", moveHandler);
+        });
     };
 
     getDeg = (cX, cY, pts) => {
