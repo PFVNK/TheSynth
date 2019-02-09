@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Tone from 'tone'
 import '../App.scss';
 
 import Pad from '../Components/Pad'
@@ -83,11 +84,15 @@ class Pads extends Component {
     }
 
     onDownKey(note) {
-        this.props.synth.triggerAttack(note)
+        Tone.context.resume().then(() => {
+            this.props.synth.triggerAttack(note)
+        })
     }
 
     onUpKey(note) {
-        this.props.synth.triggerRelease(note)
+        Tone.context.resume().then(() => {
+            this.props.synth.triggerRelease(note)
+        })
     }
 
 
