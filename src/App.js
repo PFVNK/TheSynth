@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu'
 import Tone from 'tone'
-import UnmuteButton from 'unmute'
 import MediaQuery from 'react-responsive'
 import './App.scss';
 
