@@ -8,6 +8,8 @@ class Pads extends Component {
     constructor(props) {
         super(props);
 
+        this.padRef = React.createRef()
+
         // bindings
         this.onDownKey = this.onDownKey.bind(this)
         this.onUpKey = this.onUpKey.bind(this)
@@ -129,7 +131,7 @@ class Pads extends Component {
                 clicked: false
             })
         })
-        document.addEventListener('touchstart', e => {
+        this.padRef.current.addEventListener('touchstart', e => {
             e.preventDefault()
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.touched === false && this.state.pads[index] !== undefined) {
@@ -139,9 +141,10 @@ class Pads extends Component {
                     touched: true
                 })
             }
+            console.log(e.target.className)
         }, { passive: false })
 
-        document.addEventListener('touchend', e => {
+        this.padRef.current.addEventListener('touchend', e => {
             e.preventDefault()
             this.onUpKey(this.state.activeNote)
             this.setState({
@@ -170,7 +173,7 @@ class Pads extends Component {
     render() {
         return (
             <React.Fragment >
-                <div className='pad-grid'>{this.state.pads.length > 0 && this.state.pads}</div>
+                <div ref={this.padRef} className='pad-grid'>{this.state.pads.length > 0 && this.state.pads}</div>
             </React.Fragment >
         );
     }
