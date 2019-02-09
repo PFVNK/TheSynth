@@ -89,6 +89,7 @@ p {
   color: WhiteSmoke; }
 
 .pad-grid {
+  touch-action: none;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -104,6 +105,7 @@ p {
 
 .pad {
   cursor: pointer;
+  touch-action: none;
   display: flex;
   align-items: center;
   justify-content: center;
