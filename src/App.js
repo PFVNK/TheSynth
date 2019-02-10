@@ -18,15 +18,17 @@ class App extends Component {
             synthtype: 'Synth',
             oscillatortype: 'triangle',
             value: 0,
-            ppdValue: 0
+            ppdValue: 0,
+            volumeValue: 1
         }
 
         // tone.js build
         this.synth = this.state.synth
-        this.vol = new Tone.Volume()
+        this.vol = new Tone.Volume(1)
         this.synth.chain(this.vol, Tone.Master)
 
         this.handleClickOctave = this.handleClickOctave.bind(this)
+        this.handleVolumeValue = this.handleVolumeValue.bind(this)
         this.updateSynthType = this.updateSynthType.bind(this)
         this.updateOscillatorType = this.updateOscillatorType.bind(this)
     }
@@ -45,7 +47,7 @@ class App extends Component {
 
     componentDidUpdate() {
         this.synth = this.state.synth
-        this.vol = new Tone.Volume()
+        this.vol = new Tone.Volume(this.state.volumeValue)
         this.synth.chain(this.vol, Tone.Master)
     }
 
@@ -103,6 +105,20 @@ class App extends Component {
                 break
             default:
                 this.setState({ octave: 1 })
+                break
+        }
+    }
+
+    handleVolumeValue(action) {
+        switch (action) {
+            case 'minus':
+                this.setState({ volumeValue: this.state.volumeValue - 1 })
+                break
+            case 'plus':
+                this.setState({ volumeValue: this.state.volumeValue + 1 })
+                break
+            default:
+                this.setState({ volumeValue: 1 })
                 break
         }
     }
@@ -186,6 +202,8 @@ class App extends Component {
                                 updateOscillatorType={this.updateOscillatorType}
                                 octave={this.state.octave}
                                 handleClickOctave={this.handleClickOctave}
+                                volumeValue={this.state.volumeValue}
+                                handleVolumeValue={this.handleVolumeValue}
                             />
                         </Menu>
                     </MediaQuery>
@@ -201,6 +219,8 @@ class App extends Component {
                             updateOscillatorType={this.updateOscillatorType}
                             octave={this.state.octave}
                             handleClickOctave={this.handleClickOctave}
+                            volumeValue={this.state.volumeValue}
+                            handleVolumeValue={this.handleVolumeValue}
                         />
                     </MediaQuery>
 
