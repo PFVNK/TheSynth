@@ -44,6 +44,12 @@ class Sidebar extends Component {
                             <p>{this.props.octave}</p>
                             <button onClick={() => this.props.handleClickOctave('plus')}>+</button>
                         </div>
+                        <div className='sidebar-volume-counter'>
+                            <h4>Volume</h4>
+                            <button onClick={() => this.props.handleVolumeValue('minus')}>-</button>
+                            <p>{this.props.volumeValue}</p>
+                            <button onClick={() => this.props.handleVolumeValue('plus')}>+</button>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>
