@@ -118,16 +118,33 @@ p {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba(255, 255, 255, 0.6); }
 
 .sidebar-octave-counter {
+  float: left;
+  width: 50%;
   margin-top: 10px; }
   .sidebar-octave-counter button {
     display: inline-block;
     margin: 3px 3px;
-    width: 40px;
+    width: 30px;
     color: white;
     background-color: #222; }
   .sidebar-octave-counter p {
     display: inline-block; }
   .sidebar-octave-counter h4 {
+    margin-bottom: 7px; }
+
+.sidebar-volume-counter {
+  width: 50%;
+  float: right;
+  margin-top: 10px; }
+  .sidebar-volume-counter button {
+    display: inline-block;
+    margin: 3px 3px;
+    width: 30px;
+    color: white;
+    background-color: #222; }
+  .sidebar-volume-counter p {
+    display: inline-block; }
+  .sidebar-volume-counter h4 {
     margin-bottom: 7px; }
 
 .sidebar-element {
@@ -583,7 +600,7 @@ p {
     left: 0;
     margin: 0;
     margin-left: 21px;
-    margin-bottom: 45px;
+    margin-bottom: 15px;
     display: flex;
     flex-wrap: wrap;
     display: grid;
