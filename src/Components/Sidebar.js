@@ -32,10 +32,10 @@ class Sidebar extends Component {
                         <div className='sidebar-oscillatortype'>
                             <h4>OscillatorType</h4>
                             <select value={oscvalue} onChange={this.handleOscillatorChange}>
-                                <option value="triangle">triangle</option>
-                                <option value="sawtooth">sawtooth</option>
-                                <option value="sine">sine</option>
-                                <option value="square">square</option>
+                                <option value="triangle">Triangle</option>
+                                <option value="sawtooth">Sawtooth</option>
+                                <option value="sine">Sine</option>
+                                <option value="square">Square</option>
                             </select>
                         </div>
                         <div className='sidebar-octave-counter'>
