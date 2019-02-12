@@ -14,6 +14,9 @@ h3 {
 p {
   color: white; }
 
+select {
+  font-size: 20px; }
+
 .App {
   position: relative;
   width: 80vw;
@@ -123,10 +126,12 @@ p {
   margin-top: 10px; }
   .sidebar-octave-counter button {
     display: inline-block;
-    margin: 3px 3px;
+    margin: 0px 3px;
+    height: 15px;
     width: 30px;
     color: white;
-    background-color: #222; }
+    background-color: #222;
+    border: none; }
   .sidebar-octave-counter p {
     display: inline-block; }
   .sidebar-octave-counter h4 {
@@ -138,10 +143,12 @@ p {
   margin-top: 10px; }
   .sidebar-volume-counter button {
     display: inline-block;
-    margin: 3px 3px;
+    margin: 0px 3px;
+    height: 15px;
     width: 30px;
     color: white;
-    background-color: #222; }
+    background-color: #222;
+    border: none; }
   .sidebar-volume-counter p {
     display: inline-block; }
   .sidebar-volume-counter h4 {
@@ -362,7 +369,27 @@ p {
     margin: 0;
     margin-left: 15px; }
   .sidebar-element {
-    width: 15vw; } }
+    width: 15vw; }
+  .sidebar-octave-counter button {
+    display: inline-block;
+    margin: 3px 5px;
+    width: 20px;
+    color: white;
+    background-color: #222; }
+  .sidebar-octave-counter p {
+    display: inline-block; }
+  .sidebar-octave-counter h4 {
+    margin-bottom: 7px; }
+  .sidebar-volume-counter button {
+    display: inline-block;
+    margin: 3px 5px;
+    width: 20px;
+    color: white;
+    background-color: #222; }
+  .sidebar-volume-counter p {
+    display: inline-block; }
+  .sidebar-volume-counter h4 {
+    margin-bottom: 7px; } }
 
 @media (max-width: 900px) {
   .App {
@@ -412,10 +439,7 @@ p {
 
 @media (max-width: 500px) {
   .sidebar-element {
-    width: 25vw; }
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100vh !important; } }
+    width: 25vw; } }
 
 @media (max-width: 420px) {
   .App {
@@ -445,6 +469,9 @@ p {
     width: 25vw; }
   .bm-menu {
     height: 100%; }
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100vh !important; }
   .head-container {
     position: relative;
     width: 100%;
@@ -600,7 +627,7 @@ p {
     left: 0;
     margin: 0;
     margin-left: 21px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     display: grid;

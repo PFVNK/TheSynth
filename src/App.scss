@@ -26,6 +26,10 @@ p {
     color: white;
 }
 
+select {
+    font-size: 20px;
+}
+
 .App {
     position: relative;
     width: 80vw;
@@ -157,10 +161,12 @@ p {
     margin-top: 10px;
     button {
         display: inline-block;
-        margin: 3px 3px;
+        margin: 0px 3px;
+        height: 15px;
         width: 30px;
         color: white;
         background-color: $select-black;
+        border: none;
     }
 
     p {
@@ -178,10 +184,12 @@ p {
     margin-top: 10px;
     button {
         display: inline-block;
-        margin: 3px 3px;
+        margin: 0px 3px;
+        height: 15px;
         width: 30px;
         color: white;
         background-color: $select-black;
+        border: none;
     }
 
     p {
@@ -485,6 +493,42 @@ p {
     .sidebar-element {
         width: 15vw;
     }
+
+    .sidebar-octave-counter {
+        button {
+            display: inline-block;
+            margin: 3px 5px;
+            width: 20px;
+            color: white;
+            background-color: $select-black;
+        }
+
+        p {
+        display: inline-block;
+        }
+
+        h4  {
+            margin-bottom: 7px;
+        }
+    }
+
+    .sidebar-volume-counter {
+    button {
+        display: inline-block;
+        margin: 3px 5px;
+        width: 20px;
+        color: white;
+        background-color: $select-black;
+    }
+
+    p {
+        display: inline-block;
+    }
+
+    h4 {
+        margin-bottom: 7px;
+    }
+}
   }  
 
   @media (max-width: 900px) {
@@ -559,11 +603,6 @@ p {
     .sidebar-element {
         width: 25vw;
     }
-
-    .bm-menu-wrap {
-        position: fixed;
-        height: 100vh !important;
-      }
   }
 
   @media(max-width: 420px) {
@@ -605,6 +644,11 @@ p {
 
     .bm-menu {
         height: 100%;
+    }
+
+    .bm-menu-wrap {
+        position: fixed;
+        height: 100vh !important;
     }
 
     .head-container {
@@ -813,7 +857,7 @@ p {
         left: 0;
         margin: 0;
         margin-left: 21px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
 
     
         display: flex;
