@@ -14,7 +14,7 @@ class App extends Component {
         super(props)
         this.state = {
             octave: 1,
-            synth: new Tone.Synth(),
+            synth: new Tone.PolySynth(4, Tone.Synth),
             synthtype: 'Synth',
             oscillatortype: 'triangle',
             value: 0,
@@ -53,6 +53,7 @@ class App extends Component {
 
     updateSynthType(synthType) {
         if (this.state.synth) {
+            this.state.synth.releaseAll()
             this.state.synth.disconnect()
             this.state.synth.dispose()
         }
@@ -60,18 +61,23 @@ class App extends Component {
         let settings = this.defaultSettings[this.state.synthtype]
         this.setState({
             synthtype: synthType,
-            synth: new Tone[synthType](settings)
+            synth: new Tone.PolySynth(4, Tone[synthType]).set(settings)
         })
     }
 
     // Sets oscillator type in defaultsettings
     updateOscillatorType(oscillatortype) {
+        if (this.state.synth) {
+            this.state.synth.releaseAll()
+        }
         if (this.state.synthtype !== 'PluckSynth') {
             this.setState({
                 oscillatortype: oscillatortype
             },
                 () => {
-                    this.synth.oscillator.type = oscillatortype
+                    this.synth.voices.map((e, i) => {
+                        this.synth.voices[i].oscillator.type = oscillatortype
+                    })
                 }
             )
         } else {
@@ -79,7 +85,6 @@ class App extends Component {
                 oscillatortype: ''
             })
         }
-
     }
 
     // Will handle effect changes
