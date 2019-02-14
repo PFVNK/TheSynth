@@ -75,7 +75,7 @@ class App extends Component {
                 oscillatortype: oscillatortype
             },
                 () => {
-                    this.synth.voices.map((e, i) => {
+                    this.synth.voices.forEach((e, i) => {
                         this.synth.voices[i].oscillator.type = oscillatortype
                     })
                 }
