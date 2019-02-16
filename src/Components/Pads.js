@@ -79,7 +79,7 @@ class Pads extends Component {
 
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(e) {
 
     }
 
@@ -102,56 +102,66 @@ class Pads extends Component {
             pads: newPads
         })
 
-        document.addEventListener('keydown', e => {
+        this.padRef.current.focus()
+
+        this.padRef.current.addEventListener('keydown', e => {
+            console.dir(e)
+            if (e.repeat) { return }
             let index = this.state.pads.findIndex(item => item.key === e.key)
-            if (this.state.pressed === false && this.state.pads[index] !== undefined) {
+            if (this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
                 this.setState({
-                    activeNote: this.state.pads[index].note,
+                    activeNote: this.state.pads[index].props.note,
                     pressed: true
                 })
             }
         })
-        document.addEventListener('keyup', e => {
-            this.onUpKey(this.state.activeNote)
-            this.setState({
-                activeNote: '',
-                pressed: false
-            })
+        this.padRef.current.addEventListener('keyup', e => {
+            let index = this.state.pads.findIndex(item => item.key === e.key)
+            if (this.state.pads[index] === undefined) {
+                return
+            } else {
+                this.onUpKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                this.setState({
+                    activeNote: '',
+                    pressed: false
+                })
+            }
         })
-        document.addEventListener('mousedown', e => {
+
+        this.padRef.current.addEventListener('mousedown', e => {
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.clicked === false && this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
+                console.dir(this.state.pads[index].props.note)
                 this.setState({
-                    activeNote: this.state.pads[index].note,
+                    activeNote: this.state.pads[index].props.note,
                     clicked: true
                 })
             }
         })
-        document.addEventListener('mouseup', e => {
-            this.onUpKey(this.state.activeNote)
+        this.padRef.current.addEventListener('mouseup', e => {
+            this.onUpKey(`${this.state.activeNote}${this.props.octave}`)
             this.setState({
                 activeNote: '',
                 clicked: false
             })
         })
+
         this.padRef.current.addEventListener('touchstart', e => {
             e.preventDefault()
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.touched === false && this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
                 this.setState({
-                    activeNote: this.state.pads[index].note,
+                    activeNote: this.state.pads[index].props.note,
                     touched: true
                 })
             }
-            console.log(e.target.className)
         }, { passive: false })
-
         this.padRef.current.addEventListener('touchend', e => {
             e.preventDefault()
-            this.onUpKey(this.state.activeNote)
+            this.onUpKey(`${this.state.activeNote}${this.props.octave}`)
             this.setState({
                 activeNote: '',
                 touched: false
