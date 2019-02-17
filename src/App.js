@@ -15,22 +15,26 @@ class App extends Component {
         this.state = {
             octave: 1,
             synth: new Tone.PolySynth(4, Tone.Synth),
+            monoSynth: new Tone.Synth(),
             synthtype: 'Synth',
             oscillatortype: 'triangle',
-            value: 0,
-            ppdValue: 0,
+            reverbValue: 0,
+            pingPongValue: 0,
             volumeValue: 1
         }
 
         // tone.js build
         this.synth = this.state.synth
         this.vol = new Tone.Volume(1)
-        this.synth.chain(this.vol, Tone.Master)
+        this.reverb = new Tone.Freeverb()
+        this.synth.chain(this.vol, this.reverb, Tone.Master)
 
         this.handleClickOctave = this.handleClickOctave.bind(this)
         this.handleVolumeValue = this.handleVolumeValue.bind(this)
         this.updateSynthType = this.updateSynthType.bind(this)
         this.updateOscillatorType = this.updateOscillatorType.bind(this)
+        this.handleReverbChange = this.handleReverbChange.bind(this)
+        this.handlePingPongChange = this.handlePingPongChange.bind(this)
     }
 
 
@@ -46,29 +50,50 @@ class App extends Component {
     }
 
     componentDidUpdate() {
-        this.synth = this.state.synth
-        this.vol = new Tone.Volume(this.state.volumeValue)
-        this.synth.chain(this.vol, Tone.Master)
+        if (this.state.synthtype === 'PluckSynth') {
+            this.synth = this.state.monoSynth
+            this.vol = new Tone.Volume(this.state.volumeValue)
+            this.reverb = new Tone.Freeverb(`.0${this.state.reverbValue}`)
+            this.synth.chain(this.vol, this.reverb, Tone.Master)
+        } else {
+            this.synth = this.state.synth
+            this.vol = new Tone.Volume(this.state.volumeValue)
+            this.reverb = new Tone.Freeverb(`.0${this.state.reverbValue}`)
+            this.synth.chain(this.vol, this.reverb, Tone.Master)
+            console.log(`.0${this.state.reverbValue}`)
+        }
+        console.log(this.synth)
     }
 
     updateSynthType(synthType) {
-        if (this.state.synth) {
-            this.state.synth.releaseAll()
-            this.state.synth.disconnect()
-            this.state.synth.dispose()
+        if (this.synth && this.state.synthtype === 'PluckSynth') {
+            this.synth.disconnect()
+            this.synth.dispose()
+        } else if (this.synth && this.state.synthtype !== 'PluckSynth') {
+            this.synth.releaseAll()
+            this.synth.disconnect()
+            this.synth.dispose()
         }
 
         let settings = this.defaultSettings[this.state.synthtype]
-        this.setState({
-            synthtype: synthType,
-            synth: new Tone.PolySynth(4, Tone[synthType]).set(settings)
-        })
+        if (synthType === 'PluckSynth') {
+            console.log('plucksynth working')
+            this.setState({
+                synthtype: synthType,
+                monoSynth: new Tone[synthType](settings)
+            })
+        } else {
+            this.setState({
+                synthtype: synthType,
+                synth: new Tone.PolySynth(4, Tone[synthType]).set(settings)
+            })
+        }
     }
 
     // Sets oscillator type in defaultsettings
     updateOscillatorType(oscillatortype) {
-        if (this.state.synth) {
-            this.state.synth.releaseAll()
+        if (this.synth) {
+            this.synth.releaseAll()
         }
         if (this.state.synthtype !== 'PluckSynth') {
             this.setState({
@@ -90,13 +115,13 @@ class App extends Component {
     // Will handle effect changes
     handleReverbChange = newValue => {
         this.setState({
-            value: newValue
+            reverbValue: newValue
         });
     };
 
-    handlePpdChange = newValue => {
+    handlePingPongChange = newValue => {
         this.setState({
-            ppdValue: newValue
+            pingPongValue: newValue
         })
     }
 
@@ -231,6 +256,8 @@ class App extends Component {
 
                     <Pads
                         synth={this.state.synth}
+                        monosynth={this.state.monoSynth}
+                        synthtype={this.state.synthtype}
                         octave={this.state.octave}
                     />
                 </div>

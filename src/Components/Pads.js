@@ -85,13 +85,23 @@ class Pads extends Component {
 
     onDownKey(note) {
         Tone.context.resume().then(() => {
-            this.props.synth.triggerAttack(note)
+            if (this.props.synthtype === 'PluckSynth') {
+                this.props.monosynth.triggerAttack(note)
+            }
+            else {
+                this.props.synth.triggerAttack(note)
+            }
         })
     }
 
     onUpKey(note) {
         Tone.context.resume().then(() => {
-            this.props.synth.triggerRelease(note)
+            if (this.props.synthtype === 'PluckSynth') {
+                this.props.monosynth.triggerRelease(note)
+            }
+            else {
+                this.props.synth.triggerRelease(note)
+            }
         })
     }
 
@@ -105,7 +115,6 @@ class Pads extends Component {
         this.padRef.current.focus()
 
         this.padRef.current.addEventListener('keydown', e => {
-            console.dir(e)
             if (e.repeat) { return }
             let index = this.state.pads.findIndex(item => item.key === e.key)
             if (this.state.pads[index] !== undefined) {
