@@ -15,7 +15,7 @@ class KnobPanel extends Component {
                             numTicks={25}
                             degrees={260}
                             min={0}
-                            max={10}
+                            max={9}
                             value={3}
                             color={false}
                             onChange={this.props.handleReverbChange}
@@ -28,7 +28,7 @@ class KnobPanel extends Component {
                             max={10}
                             value={3}
                             color={false}
-                            onChange={this.props.handlePpdChange}
+                            onChange={this.props.handlePingPongChange}
                         />
                         <Knob
                             size={45}
