@@ -347,7 +347,7 @@ select {
   .knob-panel {
     height: 150px; } }
 
-@media (max-width: 950px) {
+@media (max-width: 965px) {
   .pad-grid {
     grid-template-columns: repeat(4, 120px);
     grid-template-rows: minmax(120px, auto);
@@ -390,6 +390,28 @@ select {
   .sidebar-volume-counter p {
     display: inline-block; }
   .sidebar-volume-counter h4 {
+    margin-bottom: 7px; } }
+
+@media (max-width: 940px) {
+  .sidebar-volume-counter button {
+    display: inline-block;
+    margin: 3px 5px;
+    width: 18px;
+    color: white;
+    background-color: #222; }
+  .sidebar-volume-counter p {
+    display: inline-block; }
+  .sidebar-volume-counter h4 {
+    margin-bottom: 7px; }
+  .sidebar-octave-counter button {
+    display: inline-block;
+    margin: 3px 5px;
+    width: 18px;
+    color: white;
+    background-color: #222; }
+  .sidebar-octave-counter p {
+    display: inline-block; }
+  .sidebar-octave-counter h4 {
     margin-bottom: 7px; } }
 
 @media (max-width: 900px) {
@@ -526,7 +548,7 @@ select {
     height: 87px;
     width: 87px; }
   .sidebar-element {
-    width: 25vw; }
+    width: 45vw; }
   .bm-menu {
     height: 100%; }
   .head-container {
@@ -582,7 +604,7 @@ select {
     height: 90px;
     width: 90px; }
   .sidebar-element {
-    width: 25vw; }
+    width: 45vw; }
   .bm-menu {
     height: 100%; }
   .head-container {

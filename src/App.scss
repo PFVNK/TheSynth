@@ -459,7 +459,7 @@ select {
     }
   }
 
-  @media (max-width: 950px) {
+  @media (max-width: 965px) {
     .pad-grid {   
         grid-template-columns: repeat(4, 120px);
         grid-template-rows: minmax(120px, auto);
@@ -530,7 +530,45 @@ select {
         margin-bottom: 7px;
     }
 }
-  }  
+  }
+
+  @media (max-width: 940px) {
+    .sidebar-volume-counter {
+    button {
+        display: inline-block;
+        margin: 3px 5px;
+        width: 18px;
+        color: white;
+        background-color: $select-black;
+    }
+
+    p {
+        display: inline-block;
+    }
+
+    h4 {
+        margin-bottom: 7px;
+    }
+}
+
+    .sidebar-octave-counter {
+    button {
+        display: inline-block;
+        margin: 3px 5px;
+        width: 18px;
+        color: white;
+        background-color: $select-black;
+    }
+
+    p {
+        display: inline-block;
+    }
+
+    h4 {
+        margin-bottom: 7px;
+    }
+}
+  }
 
   @media (max-width: 900px) {
     .App {
@@ -721,7 +759,7 @@ select {
     }
 
     .sidebar-element {
-        width: 25vw;
+        width: 45vw;
     }
 
     .bm-menu {
@@ -797,7 +835,7 @@ select {
     }
 
     .sidebar-element {
-        width: 25vw;
+        width: 45vw;
     }
 
     .bm-menu {
