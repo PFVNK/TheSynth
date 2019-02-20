@@ -14,11 +14,11 @@ class KnobPanel extends Component {
                             size={45}
                             numTicks={25}
                             degrees={260}
-                            min={0}
-                            max={9}
+                            min={2}
+                            max={5}
                             value={3}
                             color={false}
-                            onChange={this.props.handleReverbChange}
+                            onChange={this.props.handleChorusChange}
                         />
                         <Knob
                             size={45}
