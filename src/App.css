@@ -121,6 +121,13 @@ select {
 .pad:active {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba(255, 255, 255, 0.6); }
 
+.led {
+  height: 10vh;
+  width: 20vw;
+  border: solid 2px #2ecc71;
+  background: rgba(0, 255, 0, 0.05);
+  margin-top: -75px; }
+
 .sidebar-octave-counter {
   float: left;
   width: 50%;
@@ -332,6 +339,8 @@ select {
     margin: 0;
     margin-left: 30px; }
   .sidebar-element {
+    width: 19vw; }
+  .led {
     width: 19vw; } }
 
 @media (max-width: 1000px) {
@@ -341,6 +350,8 @@ select {
     margin: 0;
     margin-left: 30px; }
   .sidebar-element {
+    width: 17vw; }
+  .led {
     width: 17vw; }
   .knob {
     margin-top: 70px; }
@@ -370,6 +381,8 @@ select {
     margin: 0;
     margin-left: 15px; }
   .sidebar-element {
+    width: 15vw; }
+  .led {
     width: 15vw; }
   .sidebar-octave-counter button {
     display: inline-block;
