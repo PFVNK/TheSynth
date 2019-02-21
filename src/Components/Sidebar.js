@@ -20,6 +20,7 @@ class Sidebar extends Component {
             <React.Fragment>
                 <div className='sidebar-container'>
                     <div className='sidebar-element'>
+                        <div className='led'></div>
                         <div className='sidebar-synthtype'>
                             <h4>SynthType</h4>
                             <select value={synthvalue} onChange={this.handleSynthChange}>
