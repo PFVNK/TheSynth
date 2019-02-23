@@ -161,7 +161,7 @@ select {
     width: 20vw;
     border: solid 2px $sidebar-green;
     background: rgba(0, 255, 0, 0.05);
-    margin-top: -75px;
+    margin-top: -60px;
 }
 
 .sidebar-octave-counter {
@@ -208,6 +208,10 @@ select {
     h4 {
         margin-bottom: 7px;
     }
+}
+
+.sidebar-synthtype {
+    margin-top: 35px;
 }
 
 .sidebar-element {
@@ -656,6 +660,10 @@ select {
     .sidebar-element {
         width: 25vw;
     }
+
+    .led{
+        width: 25vw;
+    }
   }
   
   @media(max-width: 500px) {
@@ -698,6 +706,10 @@ select {
     }
 
     .sidebar-element {
+        width: 45vw;
+    }
+
+    .led {
         width: 45vw;
     }
 
