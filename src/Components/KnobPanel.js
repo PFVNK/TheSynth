@@ -14,9 +14,9 @@ class KnobPanel extends Component {
                             size={45}
                             numTicks={25}
                             degrees={260}
-                            min={2}
+                            min={0}
                             max={5}
-                            value={3}
+                            value={0}
                             color={false}
                             onChange={this.props.handleChorusChange}
                         />
