@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Tone from 'tone'
 import '../App.scss';
 
 import Pad from '../Components/Pad'
@@ -84,27 +83,22 @@ class Pads extends Component {
     }
 
     onDownKey(note) {
-        Tone.context.resume().then(() => {
-            if (this.props.synthtype === 'PluckSynth') {
-                this.props.monosynth.triggerAttack(note)
-            }
-            else {
-                this.props.synth.triggerAttack(note)
-            }
-        })
+        if (this.props.synthtype === 'PluckSynth') {
+            this.props.monosynth.triggerAttack(note)
+        }
+        else {
+            this.props.synth.triggerAttack(note)
+        }
     }
 
     onUpKey(note) {
-        Tone.context.resume().then(() => {
-            if (this.props.synthtype === 'PluckSynth') {
-                this.props.monosynth.triggerRelease(note)
-            }
-            else {
-                this.props.synth.triggerRelease(note)
-            }
-        })
+        if (this.props.synthtype === 'PluckSynth') {
+            this.props.monosynth.triggerRelease(note)
+        }
+        else {
+            this.props.synth.triggerRelease(note)
+        }
     }
-
 
     async componentDidMount() {
         let newPads = await this.createPads()
@@ -142,7 +136,6 @@ class Pads extends Component {
             let index = this.state.pads.findIndex(item => item.props.id === parseInt(e.target.id))
             if (this.state.clicked === false && this.state.pads[index] !== undefined) {
                 this.onDownKey(`${this.state.pads[index].props.note}${this.props.octave}`)
-                console.dir(this.state.pads[index].props.note)
                 this.setState({
                     activeNote: this.state.pads[index].props.note,
                     clicked: true
