@@ -126,12 +126,16 @@ select {
   width: 20vw;
   border: solid 2px #2ecc71;
   background: rgba(0, 255, 0, 0.05);
-  margin-top: -60px; }
+  margin-top: -1px; }
+
+.canvas {
+  height: 10vh;
+  width: 20vw; }
 
 .sidebar-octave-counter {
   float: left;
   width: 50%;
-  margin-top: 10px; }
+  margin-top: 5px; }
   .sidebar-octave-counter button {
     display: inline-block;
     margin: 0px 3px;
@@ -148,7 +152,7 @@ select {
 .sidebar-volume-counter {
   width: 50%;
   float: right;
-  margin-top: 10px; }
+  margin-top: 5px; }
   .sidebar-volume-counter button {
     display: inline-block;
     margin: 0px 3px;
@@ -163,7 +167,7 @@ select {
     margin-bottom: 7px; }
 
 .sidebar-synthtype {
-  margin-top: 35px; }
+  margin-top: 25px; }
 
 .sidebar-element {
   width: 20vw; }
@@ -180,6 +184,36 @@ select {
     appearance: none; }
     .sidebar-element select option {
       background-color: #222; }
+
+.play-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 120px;
+  width: 20vw; }
+
+.play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: solid 0.01px #2ecc71; }
+
+.stop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: solid .01px white; }
+
+.record {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: solid 0.01px #ff3f34; }
 
 .sidebar-container {
   display: grid;
