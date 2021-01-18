@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { slide as Menu } from 'react-burger-menu'
-import Tone from 'tone'
+import Tone, { Chorus, Synth, PolySynth } from 'tone'
+import debounce from 'lodash/debounce'
 import MediaQuery from 'react-responsive'
 import './App.scss';
 
@@ -14,27 +15,21 @@ class App extends Component {
         super(props)
         this.state = {
             octave: 1,
-            synth: new Tone.PolySynth(4, Tone.Synth),
-            monoSynth: new Tone.Synth(),
-            synthtype: 'Synth',
+            synth: new PolySynth(4, Tone.Synth),
+            monoSynth: new Synth(),
+            synthtype: '',
             oscillatortype: 'triangle',
-            reverbValue: 0,
+            chorusValue: 0,
             pingPongValue: 0,
             volumeValue: 1
         }
 
         // tone.js build
         this.synth = this.state.synth
-        this.vol = new Tone.Volume(1)
-        this.reverb = new Tone.Freeverb()
-        this.synth.chain(this.vol, this.reverb, Tone.Master)
+        this.chorus = new Chorus(0, 0, 0)
+        this.synth.chain(this.chorus, Tone.Master)
 
-        this.handleClickOctave = this.handleClickOctave.bind(this)
-        this.handleVolumeValue = this.handleVolumeValue.bind(this)
-        this.updateSynthType = this.updateSynthType.bind(this)
-        this.updateOscillatorType = this.updateOscillatorType.bind(this)
-        this.handleReverbChange = this.handleReverbChange.bind(this)
-        this.handlePingPongChange = this.handlePingPongChange.bind(this)
+        this.initPolySynth = debounce(this.initPolySynth, 1000)
     }
 
 
@@ -49,29 +44,32 @@ class App extends Component {
         })
     }
 
+
     componentDidUpdate() {
-        if (this.state.synthtype === 'PluckSynth') {
-            this.synth = this.state.monoSynth
-            this.vol = new Tone.Volume(this.state.volumeValue)
-            this.reverb = new Tone.Freeverb(`.0${this.state.reverbValue}`)
-            this.synth.chain(this.vol, this.reverb, Tone.Master)
-        } else {
-            this.synth = this.state.synth
-            this.vol = new Tone.Volume(this.state.volumeValue)
-            this.reverb = new Tone.Freeverb(`.0${this.state.reverbValue}`)
-            this.synth.chain(this.vol, this.reverb, Tone.Master)
-            console.log(`.0${this.state.reverbValue}`)
-        }
-        console.log(this.synth)
+        console.log(this.chorus.delayTime)
+        console.log(this.state.chorusValue)
     }
 
-    updateSynthType(synthType) {
+
+    initPolySynth = () => {
+        this.synth = this.state.synth
+        this.chorus = new Chorus()
+        this.synth.chain(this.chorus, Tone.Master)
+        console.dir(this.synth)
+    }
+
+    initMonoSynth = () => {
+        this.synth = this.state.monoSynth
+        this.synth.chain(this.chorus, Tone.Master)
+    }
+
+    updateSynthType = synthType => {
         if (this.synth && this.state.synthtype === 'PluckSynth') {
-            this.synth.disconnect()
+            this.synth.disconnect(this.chorus)
             this.synth.dispose()
         } else if (this.synth && this.state.synthtype !== 'PluckSynth') {
             this.synth.releaseAll()
-            this.synth.disconnect()
+            this.synth.disconnect(this.chorus)
             this.synth.dispose()
         }
 
@@ -81,17 +79,17 @@ class App extends Component {
             this.setState({
                 synthtype: synthType,
                 monoSynth: new Tone[synthType](settings)
-            })
+            }, () => { this.initMonoSynth() })
         } else {
             this.setState({
                 synthtype: synthType,
-                synth: new Tone.PolySynth(4, Tone[synthType]).set(settings)
-            })
+                synth: new PolySynth(4, Tone[synthType]).set(settings)
+            }, () => { this.initPolySynth() })
         }
     }
 
-    // Sets oscillator type in defaultsettings
-    updateOscillatorType(oscillatortype) {
+    // Sets oscillator type
+    updateOscillatorType = oscillatortype => {
         if (this.synth) {
             this.synth.releaseAll()
         }
@@ -113,11 +111,17 @@ class App extends Component {
     }
 
     // Will handle effect changes
-    handleReverbChange = newValue => {
-        this.setState({
-            reverbValue: newValue
-        });
-    };
+    handleChorusChange = newValue => {
+        if (newValue < 1) {
+            this.setState({
+                chorusValue: newValue
+            }, () => { this.chorus.wet.value = 0; });
+        } else if (newValue > 1) {
+            this.setState({
+                chorusValue: newValue
+            }, () => { this.chorus.wet.value = 5 })
+        }
+    }
 
     handlePingPongChange = newValue => {
         this.setState({
@@ -125,7 +129,7 @@ class App extends Component {
         })
     }
 
-    handleClickOctave(action) {
+    handleClickOctave = action => {
         switch (action) {
             case 'minus':
                 this.setState({ octave: this.state.octave - 1 })
@@ -139,13 +143,13 @@ class App extends Component {
         }
     }
 
-    handleVolumeValue(action) {
+    handleVolumeValue = action => {
         switch (action) {
             case 'minus':
-                this.setState({ volumeValue: this.state.volumeValue - 1 })
+                this.setState({ volumeValue: this.state.volumeValue - 1 }, () => { this.synth.voices.forEach((e, i) => { this.synth.voices[i].volume.value = this.state.volumeValue }) })
                 break
             case 'plus':
-                this.setState({ volumeValue: this.state.volumeValue + 1 })
+                this.setState({ volumeValue: this.state.volumeValue + 1 }, () => { this.synth.voices.forEach((e, i) => { this.synth.voices[i].volume.value = this.state.volumeValue }) })
                 break
             default:
                 this.setState({ volumeValue: 1 })
@@ -215,6 +219,13 @@ class App extends Component {
                 attackNoise: 1,
                 dampening: 4000,
                 resonance: 0.7
+            },
+            Chorus: {
+                frequency: 1.5,
+                delayTime: 3.5,
+                depth: 0.7,
+                type: 'sine',
+                spread: 180
             }
         }
     }
@@ -238,7 +249,7 @@ class App extends Component {
                         </Menu>
                     </MediaQuery>
                     <KnobPanel
-                        handleReverbChange={this.handleReverbChange}
+                        handleChorusChange={this.handleChorusChange}
                         handlePpdChange={this.handlePpdChange}
                     />
                     <MediaQuery query='(min-width: 900px)'>

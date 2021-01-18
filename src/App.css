@@ -224,7 +224,8 @@ select {
   place-items: center center; }
   .sidebar-container select {
     width: 100%; }
-  .sidebar-container select:active, .sidebar-container select:hover {
+  .sidebar-container select:active,
+  .sidebar-container select:hover {
     outline-color: #2ecc71; }
 
 .knob {
@@ -297,30 +298,33 @@ select {
 
 @media (max-width: 1250px) {
   .pad-grid {
-    grid-template-columns: repeat(4, 127px);
-    grid-template-rows: minmax(127px, auto);
-    grid-gap: 1em; }
+    grid-template-columns: repeat(4, 110px);
+    grid-template-rows: minmax(110px, auto);
+    grid-gap: 1em;
+    margin-bottom: 20px;
+    margin-right: 45px; }
   .pad {
-    height: 127px;
-    width: 127px; }
+    height: 110px;
+    width: 110px; }
   .knob {
-    margin-top: 50px; }
+    margin-top: 35px; }
   .sidebar-container {
     width: 25vw;
     height: 78%;
-    margin: 0; } }
+    margin: 0;
+    margin-left: 45px; } }
 
 @media (max-width: 1150px) {
   .pad-grid {
-    grid-template-columns: repeat(4, 125px);
-    grid-template-rows: minmax(125px, auto);
+    grid-template-columns: repeat(4, 110px);
+    grid-template-rows: minmax(110px, auto);
     grid-gap: 1em;
     margin-right: 40px; }
   .pad {
-    height: 125px;
-    width: 125px; }
+    height: 110px;
+    width: 110px; }
   .knob {
-    margin-top: 50px; }
+    margin-top: 45px; }
   .knob-panel {
     display: flex;
     justify-content: flex-end;
@@ -330,46 +334,45 @@ select {
   .sidebar-container {
     width: 25vw;
     height: 78%;
-    margin: 0; } }
+    margin-left: 45px; } }
 
 @media (max-width: 1080px) {
   .pad-grid {
-    grid-template-columns: repeat(4, 125px);
-    grid-template-rows: minmax(125px, auto);
+    grid-template-columns: repeat(4, 110px);
+    grid-template-rows: minmax(110px, auto);
     grid-gap: 1em;
     margin-right: 30px; }
-  .pad {
-    height: 125px;
-    width: 125px; }
   .knob {
-    margin-top: 60px; }
+    margin-top: 45px; }
   .knob-panel {
     display: flex;
     justify-content: flex-end;
     height: 150px;
     margin-right: 10px; }
+  .title {
+    margin-left: 45px; }
   .sidebar-container {
     width: 23vw;
     height: 78%;
-    margin: 0; } }
+    margin: 0;
+    margin-left: 30px; } }
 
 @media (max-width: 1020px) {
   .pad-grid {
-    grid-template-columns: repeat(4, 120px);
-    grid-template-rows: minmax(120px, auto);
+    grid-template-columns: repeat(4, 110px);
+    grid-template-rows: minmax(110px, auto);
     grid-gap: 1em;
     margin-right: 30px; }
-  .pad {
-    height: 120px;
-    width: 120px; }
   .knob {
-    margin-top: 60px; }
+    margin-top: 50px; }
   .knob-panel {
     display: flex;
     justify-content: flex-end;
     padding: 1em;
     height: 150px;
     margin-right: 10px; }
+  .title {
+    margin-left: 25px; }
   .sidebar-container {
     width: 19vw;
     height: 78%;
@@ -391,21 +394,21 @@ select {
   .led {
     width: 17vw; }
   .knob {
-    margin-top: 70px; }
+    margin-top: 50px; }
   .knob-panel {
     height: 150px; } }
 
 @media (max-width: 965px) {
   .pad-grid {
-    grid-template-columns: repeat(4, 120px);
-    grid-template-rows: minmax(120px, auto);
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto);
     grid-gap: 1em;
     margin-right: 30px; }
   .pad {
-    height: 120px;
-    width: 120px; }
+    height: 100px;
+    width: 100px; }
   .knob {
-    margin-top: 70px; }
+    margin-top: 60px; }
   .knob-panel {
     display: flex;
     justify-content: flex-end;
@@ -416,7 +419,7 @@ select {
     width: 15vw;
     height: 78%;
     margin: 0;
-    margin-left: 15px; }
+    margin-left: 30px; }
   .sidebar-element {
     width: 15vw; }
   .led {
@@ -470,16 +473,16 @@ select {
     margin-left: 0; }
   .pad-grid {
     position: absolute;
-    grid-template-columns: repeat(4, 130px);
-    grid-template-rows: minmax(130px, auto);
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto);
     grid-gap: 1em;
-    margin-right: 75px;
+    margin-right: 30px;
     margin-left: 73px; }
   .pad {
-    height: 130px;
-    width: 130px; }
+    height: 100px;
+    width: 100px; }
   .knob {
-    margin-top: 70px;
+    margin-top: 60px;
     margin-right: 30px; }
   .knob-panel {
     display: flex;
@@ -501,12 +504,12 @@ select {
     margin-left: 0; }
   .pad-grid {
     position: absolute;
-    grid-template-columns: repeat(4, 130px);
-    grid-template-rows: minmax(130px, auto);
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto);
     grid-gap: 1em; }
   .pad {
-    height: 130px;
-    width: 130px; }
+    height: 100px;
+    width: 100px; }
   .sidebar-element {
     width: 25vw; }
   .led {
@@ -520,26 +523,25 @@ select {
   .App {
     min-width: 0;
     height: 100vh;
-    margin: 0; }
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .pad-grid {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    margin-left: 31px;
-    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: minmax(100px, auto);
-    grid-gap: 1.5em; }
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: minmax(110px, auto);
+    grid-gap: 1em;
+    transform: translate(0, -150px); }
   .pad {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
-    width: 100px; }
+    height: 110px;
+    width: 110px; }
   .sidebar-element {
     width: 45vw; }
   .led {
@@ -555,14 +557,12 @@ select {
     height: 200px; }
   .knob-panel {
     position: absolute;
-    bottom: 0;
-    left: -20px;
-    top: 100px;
     display: flex;
     justify-content: center;
     padding: 1em;
     height: 75px;
-    width: 100vw; }
+    width: 100vw;
+    transform: translate(40px, -250px); }
   .knob {
     display: flex;
     position: relative;
@@ -576,25 +576,25 @@ select {
     width: 100vw;
     height: 75px;
     font-size: 3em;
-    margin-left: 70px; }
+    transform: translate(40px, -350px); }
     .title h3 {
       margin: 0;
       margin-left: 70px; } }
 
 @media (max-width: 380px) {
+  .app {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .pad-grid {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    margin-left: 32px;
-    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     display: grid;
     grid-template-columns: repeat(3, 87px);
     grid-template-rows: minmax(87px, auto);
-    grid-gap: 1.5em; }
+    grid-gap: 1.5em;
+    transform: translate(0, 5px); }
   .pad {
     display: flex;
     align-items: center;
@@ -610,15 +610,12 @@ select {
     width: 100%;
     height: 200px; }
   .knob-panel {
-    position: absolute;
-    bottom: 0;
-    left: -20px;
-    top: 90px;
     display: flex;
     justify-content: center;
     padding: 1em;
     height: 75px;
-    width: 100vw; }
+    width: 100vw;
+    transform: translate(45px, -120px); }
   .knob {
     display: flex;
     position: relative;
@@ -632,31 +629,25 @@ select {
     width: 100vw;
     height: 75px;
     font-size: 3em;
-    margin-left: 70px; }
+    transform: translate(40px, -235px); }
     .title h3 {
       margin: 0;
       margin-left: 40px; } }
 
 @media (max-width: 365px) {
   .pad-grid {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    margin-left: 19px;
-    margin-bottom: 60px;
     display: flex;
     flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat(3, 90px);
-    grid-template-rows: minmax(90px, auto);
-    grid-gap: 1.5em; }
+    grid-template-columns: repeat(3, 85px);
+    grid-template-rows: minmax(85px, auto);
+    grid-gap: 1em; }
   .pad {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90px;
-    width: 90px; }
+    height: 85px;
+    width: 85px; }
   .sidebar-element {
     width: 45vw; }
   .bm-menu {
@@ -666,10 +657,6 @@ select {
     width: 100%;
     height: 200px; }
   .knob-panel {
-    position: absolute;
-    bottom: 0;
-    left: -20px;
-    top: 100px;
     display: flex;
     justify-content: center;
     padding: 1em;
@@ -688,7 +675,7 @@ select {
     width: 100vw;
     height: 75px;
     font-size: 3em;
-    margin-left: 70px; }
+    transform: translate(50px, -190px); }
     .title h3 {
       margin: 0;
       margin-left: 25px; } }
@@ -697,27 +684,23 @@ select {
   .App {
     min-width: 0;
     width: 100vw;
-    height: 100vh; }
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .pad-grid {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    margin-left: 21px;
-    margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat(3, 70px);
-    grid-template-rows: minmax(70px, auto);
-    grid-gap: .8em;
-    grid-column-gap: 2em; }
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: minmax(80px, auto);
+    grid-gap: 1em; }
   .pad {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
-    width: 70px; }
+    height: 80px;
+    width: 80px; }
   .sidebar-element {
     width: 35vw; }
   .bm-menu {
@@ -733,15 +716,12 @@ select {
     width: 100vw;
     height: 80px; }
   .knob-panel {
-    position: absolute;
-    bottom: 0;
-    left: -20px;
-    top: 65px;
     display: flex;
     justify-content: center;
     padding: 1em;
     height: 75px;
-    width: 100vw; }
+    width: 100vw;
+    transform: translate(45px, -170px); }
   .knob {
     display: flex;
     position: relative;
@@ -755,7 +735,7 @@ select {
     width: 100vw;
     height: 60px;
     font-size: 2em;
-    margin-left: 70px; }
+    transform: translate(60px, -245px); }
     .title h3 {
       margin: 0;
       margin-left: 55px; } }

@@ -83,20 +83,22 @@ class Pads extends Component {
     }
 
     onDownKey(note) {
-        if (this.props.synthtype === 'PluckSynth') {
-            this.props.monosynth.triggerAttack(note)
+        const { synthtype, monosynth, synth } = this.props
+        if (synthtype === 'PluckSynth') {
+            monosynth.triggerAttack(note)
         }
         else {
-            this.props.synth.triggerAttack(note)
+            synth.triggerAttack(note)
         }
     }
 
     onUpKey(note) {
-        if (this.props.synthtype === 'PluckSynth') {
-            this.props.monosynth.triggerRelease(note)
+        const { synthtype, monosynth, synth } = this.props
+        if (synthtype === 'PluckSynth') {
+            monosynth.triggerRelease(note)
         }
         else {
-            this.props.synth.triggerRelease(note)
+            synth.triggerRelease(note)
         }
     }
 

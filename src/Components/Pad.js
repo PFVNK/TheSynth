@@ -5,10 +5,11 @@ import '../App.scss';
 class Pad extends Component {
 
     render() {
+        const { id } = this.props
         return (
             <div
                 className='pad'
-                id={this.props.id}
+                id={id}
                 tabIndex='0'
             />
         );

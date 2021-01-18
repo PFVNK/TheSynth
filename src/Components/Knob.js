@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 class Knob extends Component {
     constructor(props) {
         super(props);
+
         this.fullAngle = props.degrees;
         this.startAngle = (360 - props.degrees) / 2;
         this.endAngle = this.startAngle + props.degrees;
@@ -21,7 +22,7 @@ class Knob extends Component {
     }
 
     startDrag = e => {
-        e.preventDefault();
+        e.preventDefault()
         const knob = e.target.getBoundingClientRect();
         const pts = {
             x: knob.left + knob.width / 2,
@@ -42,15 +43,12 @@ class Knob extends Component {
             this.setState({ deg: this.currentDeg });
             this.props.onChange(newValue);
         };
-        document.addEventListener("mousemove", moveHandler);
-        document.addEventListener("mouseup", e => {
-            document.removeEventListener("mousemove", moveHandler);
-        });
 
-        document.addEventListener("touchmove", moveHandler);
-        document.addEventListener("touchend", e => {
-            document.removeEventListener("touchmove", moveHandler);
-        });
+        document.addEventListener("mousemove", moveHandler, false);
+        document.addEventListener("mouseup", e => {
+            document.removeEventListener("mousemove", moveHandler)
+        })
+
     };
 
     getDeg = (cX, cY, pts) => {

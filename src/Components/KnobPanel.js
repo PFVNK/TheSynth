@@ -3,6 +3,7 @@ import Knob from '../Components/Knob'
 
 class KnobPanel extends Component {
     render() {
+        const { handleChorusChange } = this.props
         return (
             <React.Fragment>
                 <div className='head-container'>
@@ -15,8 +16,8 @@ class KnobPanel extends Component {
                             numTicks={25}
                             degrees={260}
                             min={0}
-                            max={5}
-                            value={0}
+                            max={10}
+                            value={3}
                             color={false}
                             onChange={this.props.handleChorusChange}
                         />
@@ -28,7 +29,7 @@ class KnobPanel extends Component {
                             max={10}
                             value={3}
                             color={false}
-                            onChange={this.props.handlePingPongChange}
+                            onChange={this.props.handlechorusChange}
                         />
                         <Knob
                             size={45}
@@ -38,7 +39,7 @@ class KnobPanel extends Component {
                             max={100}
                             value={30}
                             color={false}
-                            onChange={this.props.handleChange}
+                            onChange={this.props.handleChorusChange}
                         />
                     </div>
                 </div>
