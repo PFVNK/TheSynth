@@ -97,13 +97,13 @@ select {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-right: 80px;
+  margin-right: 30px;
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  grid-template-columns: repeat(4, 130px);
-  grid-template-rows: minmax(130px, auto);
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(100px, auto);
   grid-gap: 1em;
   transition: ease all .5ms; }
 
@@ -113,8 +113,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 130px;
-  width: 130px;
+  height: 100px;
+  width: 100px;
   box-shadow: -3px 3px #ff3f34, -2px 2px #ff3f34, -1px 1px #ff3f34;
   border: solid 1.5px #ff3f34; }
 
@@ -233,7 +233,7 @@ select {
   position: relative;
   float: right;
   margin: 0 40px;
-  margin-top: 50px;
+  margin-top: 60px;
   transition: ease all 1ms; }
 
 .knob .ticks {
@@ -283,7 +283,7 @@ select {
   padding: 1em;
   height: 150px;
   width: 40%;
-  margin-right: 40px; }
+  margin-right: 20px; }
 
 .title {
   position: relative;
