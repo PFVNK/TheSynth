@@ -692,6 +692,12 @@ select {
     .sidebar-element {
         width: 20vw;
     }
+
+    .bm-menu-wrap {
+        position: absolute;
+        top: 0;
+        height: 100vh !important;
+    }
 }
 
 @media(max-width: 800px) {
@@ -827,7 +833,7 @@ select {
     }
 }
 
-@media(max-height: 720px) {
+@media(max-height: 720px) and (max-width: 420px) {
     .title {
         transform: translate(40px, -260px);
     }
@@ -929,7 +935,7 @@ select {
     }
 }
 
-@media(max-height: 680px) {
+@media(max-height: 680px) and (max-width: 380px) {
     .title {
         transform: translate(40px, -240px);
     }
@@ -939,13 +945,14 @@ select {
     }
 }
 
-@media(max-height: 650px) {
+@media(max-height: 650px) and (max-width: 380px) {
     .title {
         transform: translate(40px, -220px);
     }
 }
 
-@media(max-height: 630px) {
+@media(max-height: 630px),
+(max-width: 380px) {
     .title {
         transform: translate(40px, -220px);
     }
@@ -967,7 +974,7 @@ select {
     }
 }
 
-@media(max-height: 600px) {
+@media(max-height: 600px) and (max-width: 380px) {
     .title {
         transform: translate(40px, -190px);
     }
@@ -1166,7 +1173,7 @@ select {
     }
 }
 
-@media(max-height: 480px) {
+@media(max-height: 480px) and (max-width: 330px) {
     .title {
         transform: translate(50px, -190px);
     }
