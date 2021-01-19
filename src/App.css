@@ -675,7 +675,7 @@ select {
   .title {
     transform: translate(40px, -190px); }
   .knob-panel {
-    transform: translate(40px, -120px); }
+    transform: translate(40px, -123px); }
   .pad-grid {
     grid-template-columns: repeat(3, 83px);
     grid-template-rows: minmax(83px, auto);
